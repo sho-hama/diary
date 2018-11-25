@@ -1,0 +1,52 @@
+<!-- 全ページ共通に表示する項目 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TweetApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <body>
+    <header>
+      <div class="header-logo">
+        <a href="/">Ishiura lab. Local Twitter</a>
+      </div>
+      <ul class="header-menus">
+        <li>
+          <a href="/about">ABOUT</a>
+        </li>
+        <li>
+          <a href="/posts/index">投稿一覧</a>
+        </li>
+        <li>
+          <a href="/posts/new">新規作成</a>
+        </li>
+        <li>
+          <a href="/users/index">ユーザー一覧</a>
+        </li>
+        <li>
+          <a href="/signup">新規登録</a>
+        </li>
+      </ul>
+    </header>
+    <% if flash[:notice]%>
+      <div class="flash" id="notice">
+        <%= flash[:notice]%>
+      </div>
+   
+    <script type="text/javascript">
+    $(function() {
+        setTimeout(function() {
+            $('#notice').fadeOut("slow");
+        }, 2000);
+    });
+    </script>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
