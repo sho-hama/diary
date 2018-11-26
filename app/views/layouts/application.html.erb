@@ -14,37 +14,54 @@
   <body>
     <header>
       <div class="header-logo">
-        <a href="/">Ishiura lab. Local Twitter</a>
+        <% if @current_user %>
+          <%= link_to("Twitter", "/posts/index") %>
+        <% else %>
+          <%= link_to("Twitter", "/") %>
+        <% end %>
       </div>
       <ul class="header-menus">
+        <% if @current_user %>
         <li>
-          <a href="/about">ABOUT</a>
+          <%= link_to("ログイン:#{@current_user.name}さん", "/users/#{@current_user.id}")%>
         </li>
         <li>
-          <a href="/posts/index">投稿一覧</a>
+          <%= link_to("投稿一覧", "/posts/index") %>
         </li>
         <li>
-          <a href="/posts/new">新規作成</a>
+          <%= link_to("新規投稿", "/posts/new") %>
         </li>
         <li>
-          <a href="/users/index">ユーザー一覧</a>
+          <%= link_to("ユーザー一覧", "/users/index") %>
         </li>
         <li>
-          <a href="/signup">新規登録</a>
+          <%= link_to("ログアウト", "/logout", :method => :post) %>
         </li>
+        <% else %>
+        <li>
+          <%= link_to("ABOUT", "/about")%>
+        </li>
+        <li>
+          <%= link_to("新規登録", "/signup")%>
+        </li>
+        <li>
+          <%= link_to("ログイン", "/login")%>
+        </li>
+        <%end%>
+
       </ul>
     </header>
     <% if flash[:notice]%>
-      <div class="flash" id="notice">
-        <%= flash[:notice]%>
-      </div>
-   
+    <div class="flash" id="notice">
+      <%= flash[:notice]%>
+    </div>
+    
     <script type="text/javascript">
-    $(function() {
-        setTimeout(function() {
-            $('#notice').fadeOut("slow");
-        }, 2000);
-    });
+      $(function() {
+      setTimeout(function() {
+      $('#notice').fadeOut("slow");
+      }, 5000);
+      });
     </script>
     <%end%>
     <%= yield %>

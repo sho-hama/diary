@@ -6,7 +6,9 @@
       <p><%=@user.email %></p>
     </div>
     <div class="post-menus">
+      <%if @user.id == @current_user.id%>
       <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      <%end%>
     </div>
   </div>
 </div>
