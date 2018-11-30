@@ -5,7 +5,7 @@
     <title>TweetApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -19,9 +19,22 @@
         <% else %>
           <%= link_to("Twitter", "/") %>
         <% end %>
-      </div>
-      <ul class="header-menus">
+      
+      <div class="header-logo-twitter">
         <% if @current_user %>
+          <%= link_to("/posts/index") do%>
+            <span class="fa fa-twitter login"></span>
+          <%end%>
+        <%else%>
+          <%= link_to("/") do%>
+            <span class="fa fa-twitter not-login"></span>
+          <%end%>
+        <%end%>
+      </div>
+      </div>
+      
+      <% if @current_user %>.
+      <ul class="header-menus-login">
         <li>
           <%= link_to("ログイン:#{@current_user.name}さん", "/users/#{@current_user.id}")%>
         </li>
@@ -37,7 +50,9 @@
         <li>
           <%= link_to("ログアウト", "/logout", :method => :post) %>
         </li>
-        <% else %>
+      </ul>
+      <% else %>
+      <ul class="header-menus-not-login">
         <li>
           <%= link_to("ABOUT", "/about")%>
         </li>
@@ -47,7 +62,8 @@
         <li>
           <%= link_to("ログイン", "/login")%>
         </li>
-        <%end%>
+      </ul>
+      <%end%>
 
       </ul>
     </header>
