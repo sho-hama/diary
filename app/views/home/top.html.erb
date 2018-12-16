@@ -4,4 +4,17 @@
     <p>今の気持ちをつぶやいてみましょう。</p>
   </div>
 </div>
+<script type="text/javascript">
+  $(function() {
+    $('h2').hide();
+    $('p').hide();
+    setTimeout(function() {
+      $('h2').fadeIn("slow");
+      }, 300);
+    setTimeout(function() {
+      $('p').fadeIn("slow");
+    }, 1000);
+  });
+
+</script>
 
