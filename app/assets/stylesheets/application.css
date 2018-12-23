@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+#page-top-btn {
+    position: fixed;
+    bottom: -10px; 
+    right: 10px; 
+}
+#page-top-btn a {
+    display: block;
+    text-decoration: none;
+    color: #fff; 
+    background: #00bfff;
+    text-align: center; 
+    border-radius: 5%; 
+    outline: none; 
+}
+#page-top-btn a:hover {
+    text-decoration: none; 
+    background: #87cefa;
+}
+
+#page-top-btn {
+    font-size: 13px; 
+}
+#page-top-btn a {
+    width: 100px; 
+    height: 70px; 
+    padding: 24px 0; 
+}
+

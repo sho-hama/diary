@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TweetApp</title>
+    <title>DialyApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,22 +15,22 @@
     <header>
       <div class="header-logo">
         <% if @current_user %>
-          <%= link_to("Twitter", "/posts/index") %>
+          <%= link_to("Dialy", "/posts/index") %>
         <% else %>
-          <%= link_to("Twitter", "/") %>
+          <%= link_to("Dialy", "/") %>
         <% end %>
       
-      <div class="header-logo-twitter">
-        <% if @current_user %>
-          <%= link_to("/posts/index") do%>
-            <span class="fa fa-twitter login"></span>
+        <div class="header-logo-twitter">
+          <% if @current_user %>
+            <%= link_to("/posts/index") do%>
+              <span class="fa fa-twitter login"></span>
+            <%end%>
+          <%else%>
+            <%= link_to("/") do%>
+              <span class="fa fa-twitter not-login"></span>
+            <%end%>
           <%end%>
-        <%else%>
-          <%= link_to("/") do%>
-            <span class="fa fa-twitter not-login"></span>
-          <%end%>
-        <%end%>
-      </div>
+        </div>
       </div>
       
       <% if @current_user %>.
@@ -39,13 +39,13 @@
           <%= link_to("Login:#{@current_user.name}", "/users/#{@current_user.id}")%>
         </li>
         <li>
-          <%= link_to("Tweet list", "/posts/index") %>
+          <%= link_to("Posts", "/posts/index") %>
         </li>
         <li>
           <%= link_to("New", "/posts/new") %>
         </li>
         <li>
-          <%= link_to("Member", "/users/index") %>
+          <%= link_to("Members", "/users/index") %>
         </li>
         <li>
           <%= link_to("Logout", "/logout", :method => :post) %>
@@ -74,11 +74,13 @@
     
     <script type="text/javascript">
       $(function() {
-      setTimeout(function() {
-      $('#notice').fadeOut("slow");
-      }, 5000);
+        setTimeout(function() {
+          $('#notice').fadeOut("slow");
+        }, 5000);
       });
     </script>
+
+    
     
     <%end%>
     <%= yield %>
