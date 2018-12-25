@@ -1,2 +1,4 @@
 # README
-* Rails と JQueryの勉強を兼ねてTwitterアプリを作っている
+* Rails の勉強兼ねた日記アプリ
+
+
